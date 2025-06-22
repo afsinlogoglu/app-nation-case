@@ -1,0 +1,52 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      UserRole @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  weatherQueries WeatherQuery[]
+
+  @@map("users")
+  @@index([email])
+  @@index([role])
+}
+
+model WeatherQuery {
+  id          String   @id @default(cuid())
+  city        String
+  country     String?
+  temperature Float
+  humidity    Int?
+  description String?
+  icon        String?
+  userId      String
+  createdAt   DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("weather_queries")
+  @@index([userId])
+  @@index([city])
+  @@index([createdAt])
+  @@index([userId, createdAt])
+} 
