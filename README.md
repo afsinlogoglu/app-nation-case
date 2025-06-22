@@ -53,6 +53,14 @@ A simple weather API built with Node.js, TypeScript, and Express. Fetches weathe
    npm run dev
    ```
 
+## API Testing
+
+### Postman Collection
+Import `Weather_API.postman_collection.json` into Postman to test all endpoints with pre-configured requests.
+
+### Manual Testing
+You can also test endpoints manually using curl or any API client.
+
 ## API Endpoints
 
 ### Auth
@@ -61,7 +69,7 @@ A simple weather API built with Node.js, TypeScript, and Express. Fetches weathe
 - `GET /api/auth/users` - Get all users (admin only)
 
 ### Weather
-- `POST /api/auth/weather/current` - Get current weather for a city
+- `POST /api/weather/current` - Get current weather for a city
 - `GET /api/weather/history` - Get user's weather history
 - `DELETE /api/weather/cache` - Clear cache (admin only)
 
@@ -116,6 +124,6 @@ Two main tables:
 - Weather data is cached for 5 minutes
 - Admin users can see all users and clear cache
 - Regular users can only see their own data
-- Rate limit: 100 requests per 15 minutes 
+- Rate limit: 100 requests per 15 minutes
 
 ## Prepared by Afşin for AppNation Case
