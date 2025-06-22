@@ -23,7 +23,7 @@ A simple weather API built with Node.js, TypeScript, and Express. Fetches weathe
 
 1. **Clone and install**
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/afsinlogoglu/app-nation-case
    cd app-nation-case
    npm install
    ```
